@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="gl">
+<head>
+  <meta charset="utf-8">
+  <title>Enviar traballo — Rap do País</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1720; --card:#0b1220; --muted:#9aa4b2;
+      --accent:#f59e0b; --text:#e6eef6;
+    }
+
+    body{
+      margin:0;
+      font-family:Inter,system-ui;
+      background:linear-gradient(180deg,var(--bg),#071028);
+      color:var(--text);
+    }
+
+    .wrap{
+      max-width:720px;
+      margin:40px auto;
+      padding:24px;
+    }
+
+    h1{margin-bottom:6px}
+    p{color:var(--muted);font-size:14px}
+
+    .notice{
+      margin-top:14px;
+      padding:14px;
+      border-radius:10px;
+      background:rgba(245,158,11,0.08);
+      border:1px solid rgba(245,158,11,0.25);
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    form{
+      margin-top:22px;
+      background:rgba(255,255,255,0.02);
+      padding:24px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.04);
+    }
+
+    label{
+      display:block;
+      margin-top:16px;
+      font-weight:600;
+      font-size:14px;
+    }
+
+    input, select, textarea{
+      width:100%;
+      margin-top:6px;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:#0b1220;
+      color:var(--text);
+      font-family:inherit;
+    }
+
+    textarea{min-height:130px;resize:vertical}
+
+    button{
+      margin-top:24px;
+      width:100%;
+      padding:12px;
+      border-radius:10px;
+      border:none;
+      background:linear-gradient(135deg,var(--accent),#ef4444);
+      color:#fff;
+      font-weight:700;
+      cursor:pointer;
+      font-size:15px;
+    }
+
+    button:hover{opacity:.9}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <h1>Envío de traballos</h1>
+    <p>
+      Espazo aberto para artistas de Galicia. Todo o material será revisado con respecto.
+    </p>
+
+    <div class="notice">
+      <strong>Importante:</strong><br>
+      Se precisas enviar fotos, vídeos, audios ou calquera outro arquivo,
+      <u>non os adxuntes aquí</u>. Sube o material a Drive, Dropbox, WeTransfer,
+      Spotify, YouTube, etc. e pega a ligazón na caixa de descrición.
+    </div>
+
+    <form id="formulario">
+      <label>Nome do artista ou artistas
+        <input type="text" id="artista" required>
+      </label>
+
+      <label>Provincia
+        <select id="provincia" required>
+          <option value="">Selecciona provincia</option>
+          <option>A Coruña</option>
+          <option>Lugo</option>
+          <option>Ourense</option>
+          <option>Pontevedra</option>
+        </select>
+      </label>
+
+      <label>Poboación
+        <input type="text" id="poboacion" placeholder="Ex: Vigo, Ribeira, Chantada…" required>
+      </label>
+
+      <label>Descrición do traballo / Ligazón
+        <textarea
+          id="descricion"
+          placeholder="Describe o traballo e/ou pega aquí as ligazóns ao material (Spotify, YouTube, Drive, etc.)"
+          required></textarea>
+      </label>
+
+      <button type="submit">Enviar traballo</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('formulario').addEventListener('submit', e => {
+      e.preventDefault();
+
+      const corpo = `
+Artista(s): ${document.getElementById('artista').value}
+Provincia: ${document.getElementById('provincia').value}
+Poboación: ${document.getElementById('poboacion').value}
+
+Descrición / Ligazóns:
+${document.getElementById('descricion').value}
+      `;
+
+      const mailto =
+        `mailto:rapdopais@gmail.com?subject=Envío de traballo — Rap do País&body=${encodeURIComponent(corpo)}`;
+
+      window.location.href = mailto;
+    });
+  </script>
+</body>
+</html>
