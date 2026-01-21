@@ -98,34 +98,81 @@
       Spotify, YouTube, etc. e pega a ligazón na caixa de descrición.
     </div>
 
-    <form id="formulario">
-      <label>Nome do artista ou artistas
-        <input type="text" id="artista" required>
-      </label>
+   <form
+  action="https://formspree.io/f/mpqqbdlb"
+  method="POST"
+>
 
-      <label>Provincia
-        <select id="provincia" required>
-          <option value="">Selecciona provincia</option>
-          <option>A Coruña</option>
-          <option>Lugo</option>
-          <option>Ourense</option>
-          <option>Pontevedra</option>
-        </select>
-      </label>
+  <!-- Correo do remitente (opcional pero recomendable) -->
+  <label>
+    Correo electrónico de contacto
+    <input
+      type="email"
+      name="email"
+      placeholder="exemplo@email.com"
+      required
+    >
+  </label>
 
-      <label>Poboación
-        <input type="text" id="poboacion" placeholder="Ex: Vigo, Ribeira, Chantada…" required>
-      </label>
+  <label>
+    Nome do artista ou artistas
+    <input
+      type="text"
+      name="artista"
+      required
+    >
+  </label>
 
-      <label>Descrición do traballo / Ligazón
-        <textarea
-          id="descricion"
-          placeholder="Describe o traballo e/ou pega aquí as ligazóns ao material (Spotify, YouTube, Drive, etc.)"
-          required></textarea>
-      </label>
+  <label>
+    Provincia
+    <select name="provincia" required>
+      <option value="">Selecciona provincia</option>
+      <option>A Coruña</option>
+      <option>Lugo</option>
+      <option>Ourense</option>
+      <option>Pontevedra</option>
+    </select>
+  </label>
 
-      <button type="submit">Enviar traballo</button>
-    </form>
+  <label>
+    Poboación
+    <input
+      type="text"
+      name="poboacion"
+      placeholder="Ex: Vigo, Ribeira, Chantada…"
+      required
+    >
+  </label>
+
+  <label>
+    Descrición do traballo / Ligazóns
+    <textarea
+      name="message"
+      placeholder="Describe o traballo e/ou pega aquí ligazóns a fotos, vídeos, audios (Drive, YouTube, Spotify, etc.)"
+      required
+    ></textarea>
+  </label>
+
+  <!-- Redirección tras envío correcto -->
+  <input
+    type="hidden"
+    name="_redirect"
+    value="grazas.html"
+  >
+
+  <!-- Asunto personalizado -->
+  <input
+    type="hidden"
+    name="_subject"
+    value="Novo envío de traballo — Rap do País"
+  >
+
+  <button type="submit">
+    Enviar traballo
+  </button>
+
+</form>
+
   </div>
 
   <script>
