@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rap do País — Blog</title>
+  <meta name="description" content="Rap do País — reflexiones, música y noticias." />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+  <!-- Fuentes y estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1720; --card:#0b1220; --muted:#9aa4b2; --accent:#f59e0b; --text:#e6eef6;
+      --glass: rgba(255,255,255,0.03);
+    }
+    [data-theme="light"]{
+      --bg:#f7fafc; --card:#ffffff; --muted:#616b75; --accent:#db6b0b; --text:#0b1220; --glass: rgba(11,18,32,0.04);
+    }
+
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:var(--text);background:linear-gradient(180deg,var(--bg),#071028);-webkit-font-smoothing:antialiased;}
+    .wrap{max-width:980px;margin:40px auto;padding:24px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ef4444);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:18px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+
+    nav{display:flex;gap:12px;align-items:center}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;color:var(--text);cursor:pointer;font-weight:600}
+    .btn.ghost{background:var(--glass);border:1px solid rgba(255,255,255,0.04);}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:22px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 18px rgba(2,6,23,0.5);transition:transform .18s ease}
+    .card:hover{transform:translateY(-6px)}
+    .card h3{margin:0 0 8px 0;font-size:16px}
+    .card p{margin:0;color:var(--muted);font-size:13px}
+    .meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px;color:var(--muted);font-size:12px}
+
+    footer{margin-top:36px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* Header small screens */
+    @media (max-width:560px){
+      header{flex-direction:column;align-items:flex-start}
+      .brand{gap:10}
+    }
+
+    /* Utility */
+    .tag{background:rgba(255,255,255,0.04);padding:4px 8px;border-radius:999px;font-size:12px}
+    a.card-link{color:inherit;text-decoration:none;display:block}
+    .hero{
+      background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:16px;border-radius:12px;margin-bottom:18px;border:1px solid rgba(255,255,255,0.02);
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>RDP</div>
+        <div>
+          <h1>Rap do País</h1>
+          <p class="lead">Noticias, letras y pensamiento — un blog independiente</p>
+        </div>
+      </div>
+
+      <nav>
+        <button class="btn ghost" id="themeToggle" aria-pressed="false">Modo claro</button>
+        <a class="btn" href="#escribir" id="nuevoPost">Escribir</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="intro">
+      <strong>Bienvenido</strong>
+      <p style="margin:.4rem 0 0 0;color:var(--muted);font-size:14px">
+        Aquí publico críticas, letras y reflexiones. Haz clic en una entrada para leerla completa. Si quieres, edita los archivos en /posts/ en tu repo.
+      </p>
+    </section>
+
+    <main>
+      <div class="grid" id="postsGrid">
+        <!-- Las tarjetas de entradas se generan abajo por JavaScript. -->
+      </div>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Rap do País · Hecho con ♥ · <span style="color:var(--muted)">GitHub Pages</span>
+    </footer>
+  </div>
+
+  <script>
+    // Datos de ejemplo — reemplaza o añade entradas creando archivos HTML en /posts/
+    const posts = [
+      {
+        slug: 'presentacion-rap-do-pais',
+        title: 'Presentación — ¿Qué es Rap do País?',
+        excerpt: 'Breve introducción al proyecto, objetivos y cómo participar.',
+        date: '2026-01-21',
+        tag: 'Introducción'
+      },
+      {
+        slug: 'letra-nueva-enero-2026',
+        title: 'Letra nueva — Enero 2026',
+        excerpt: 'Una letra breve con reflexiones sobre la ciudad y la memoria.',
+        date: '2026-01-12',
+        tag: 'Letras'
+      },
+      {
+        slug: 'reseña-album-local',
+        title: 'Reseña: Álbum local que merece atención',
+        excerpt: 'Opinión sobre un lanzamiento reciente del circuito local.',
+        date: '2025-12-05',
+        tag: 'Reseñas'
+      }
+    ];
+
+    // Renderizado de tarjetas
+    const grid = document.getElementById('postsGrid');
+    posts.forEach(p => {
+      const a = document.createElement('a');
+      a.className = 'card-link';
+      a.href = `posts/${p.slug}.html`; // plantilla: posts/<slug>.html
+      a.innerHTML = `
+        <article class="card">
+          <h3>${p.title}</h3>
+          <p>${p.excerpt}</p>
+          <div class="meta">
+            <span class="tag">${p.tag}</span>
+            <span>${p.date}</span>
+          </div>
+        </article>
+      `;
+      grid.appendChild(a);
+    });
+
+    // Theme toggle muy simple
+    const root = document.body;
+    const toggle = document.getElementById('themeToggle');
+    const yearEl = document.getElementById('year');
+    yearEl.textContent = new Date().getFullYear();
+
+    // Guardar preferencia simple en localStorage
+    const saved = localStorage.getItem('rdp-theme') || 'dark';
+    if(saved === 'light') root.setAttribute('data-theme','light'), toggle.textContent='Modo oscuro', toggle.setAttribute('aria-pressed','true');
+
+    toggle.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', cur);
+      localStorage.setItem('rdp-theme', cur);
+      toggle.textContent = cur === 'light' ? 'Modo oscuro' : 'Modo claro';
+      toggle.setAttribute('aria-pressed', cur === 'light');
+    });
+
+    // Nuevo post: link a sección o instrucción simple
+    document.getElementById('nuevoPost').addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Para añadir una nueva entrada crea un archivo HTML en /posts/ con este formato:\n\nposts/mi-entrada.html\n\nPuedes copiar la plantilla que aparece en el README del repo o pedírmela y te la doy.');
+    });
+  </script>
+</body>
+</html>
