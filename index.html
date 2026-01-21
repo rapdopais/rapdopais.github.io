@@ -22,7 +22,13 @@
     .wrap{max-width:980px;margin:40px auto;padding:24px;}
     header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ef4444);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:18px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .logo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:10px;
+}
+
     h1{margin:0;font-size:20px}
     p.lead{margin:0;color:var(--muted);font-size:13px}
 
@@ -58,7 +64,10 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="logo" aria-hidden>RDP</div>
+        <div class="logo" aria-hidden>
+  <img src="images/logo-svg.svg" alt="Rap do País" />
+</div>
+
         <div>
           <h1>Rap do País</h1>
           <p class="lead">RAP DE GALICIA</p>
