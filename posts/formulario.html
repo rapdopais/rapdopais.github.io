@@ -11,6 +11,8 @@
     :root{
       --bg:#0f1720; --card:#0b1220; --muted:#9aa4b2;
       --accent:#f59e0b; --text:#e6eef6;
+      --glass: rgba(255,255,255,0.03);
+      --border: rgba(255,255,255,0.06);
     }
 
     body{
@@ -26,8 +28,72 @@
       padding:24px;
     }
 
-    h1{margin-bottom:6px}
-    p{color:var(--muted);font-size:14px}
+    /* Header (faltaba en tu CSS) */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:22px;
+    }
+
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .logo{
+      width:56px;
+      height:56px;
+      border-radius:10px;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,var(--accent),#ef4444);
+      box-shadow:0 6px 18px rgba(2,6,23,0.6);
+      text-decoration:none;
+    }
+
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .lead{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    nav{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .btn{
+      background:transparent;
+      border:1px solid var(--border);
+      padding:8px 12px;
+      border-radius:8px;
+      color:var(--text);
+      cursor:pointer;
+      font-weight:600;
+      text-decoration:none;
+      font-size:14px;
+    }
+
+    .btn.ghost{
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,0.04);
+    }
+
+    h1{margin:0 0 6px 0}
+    p{color:var(--muted);font-size:14px;margin:0}
 
     .notice{
       margin-top:14px;
@@ -52,6 +118,7 @@
       margin-top:16px;
       font-weight:600;
       font-size:14px;
+      color:var(--text);
     }
 
     input, select, textarea{
@@ -63,6 +130,7 @@
       background:#0b1220;
       color:var(--text);
       font-family:inherit;
+      box-sizing:border-box;
     }
 
     textarea{min-height:130px;resize:vertical}
@@ -81,15 +149,24 @@
     }
 
     button:hover{opacity:.9}
+
+    @media (max-width:560px){
+      header{flex-direction:column;align-items:flex-start}
+      nav{width:100%}
+      nav .btn{width:100%;text-align:center}
+    }
   </style>
 </head>
+
+<body>
+  <div class="wrap">
+
+    <!-- HEADER -->
     <header>
       <div class="brand">
-        <div class="logo" aria-hidden>
- <a href="../index.html" class="logo" aria-label="Volver ao inicio">
-  <img src="../images/logo-transparent-svg.svg" alt="Rap do País">
-</a>
-</div>
+        <a href="../index.html" class="logo" aria-label="Volver ao inicio">
+          <img src="../images/logo-transparent-svg.svg" alt="Rap do País">
+        </a>
 
         <div>
           <h1>Rap do País</h1>
@@ -99,12 +176,11 @@
 
       <nav>
         <button class="btn ghost" id="themeToggle" aria-pressed="false">Modo claro</button>
-        <a class="btn" href="posts/formulario.html">Formulario de envío de traballos</a>
+        <a class="btn" href="../index.html">Inicio</a>
       </nav>
     </header>
-<body>
-  <div class="wrap">
 
+    <!-- INTRO -->
     <h1>Envío de traballos</h1>
     <p>
       Espazo aberto para artistas de Galicia. Todo o material será revisado con respecto.
@@ -117,100 +193,96 @@
       Spotify, YouTube, etc. e pega a ligazón na caixa de descrición.
     </div>
 
-   <form
-  action="https://formspree.io/f/mpqqbdlb"
-  method="POST"
->
+    <!-- FORM -->
+    <form action="https://formspree.io/f/mpqqbdlb" method="POST">
 
-  <!-- Correo do remitente (opcional pero recomendable) -->
-  <label>
-    Correo electrónico de contacto
-    <input
-      type="email"
-      name="email"
-      placeholder="exemplo@email.com"
-      required
-    >
-  </label>
+      <label>
+        Correo electrónico de contacto
+        <input
+          type="email"
+          name="email"
+          placeholder="exemplo@email.com"
+          required
+        >
+      </label>
 
-  <label>
-    Nome do artista ou artistas
-    <input
-      type="text"
-      name="artista"
-      required
-    >
-  </label>
+      <label>
+        Nome do artista ou artistas
+        <input
+          type="text"
+          name="artista"
+          placeholder="Ex: Xoán & Lía"
+          required
+        >
+      </label>
 
-  <label>
-    Provincia
-    <select name="provincia" required>
-      <option value="">Selecciona provincia</option>
-      <option>A Coruña</option>
-      <option>Lugo</option>
-      <option>Ourense</option>
-      <option>Pontevedra</option>
-    </select>
-  </label>
+      <label>
+        Provincia
+        <select name="provincia" required>
+          <option value="">Selecciona provincia</option>
+          <option value="A Coruña">A Coruña</option>
+          <option value="Lugo">Lugo</option>
+          <option value="Ourense">Ourense</option>
+          <option value="Pontevedra">Pontevedra</option>
+        </select>
+      </label>
 
-  <label>
-    Poboación
-    <input
-      type="text"
-      name="poboacion"
-      placeholder="Ex: Vigo, Ribeira, Chantada…"
-      required
-    >
-  </label>
+      <label>
+        Poboación
+        <input
+          type="text"
+          name="poboacion"
+          placeholder="Ex: Vigo, Ribeira, Chantada…"
+          required
+        >
+      </label>
 
-  <label>
-    Descrición do traballo / Ligazóns
-    <textarea
-      name="message"
-      placeholder="Describe o traballo e/ou pega aquí ligazóns a fotos, vídeos, audios (Drive, YouTube, Spotify, etc.)"
-      required
-    ></textarea>
-  </label>
+      <label>
+        Descrición do traballo / Ligazóns
+        <textarea
+          name="message"
+          placeholder="Describe o traballo e/ou pega aquí ligazóns a fotos, vídeos, audios (Drive, YouTube, Spotify, etc.)"
+          required
+        ></textarea>
+      </label>
 
-  <!-- Redirección tras envío correcto -->
-  <input
-    type="hidden"
-    name="_redirect"
-    value="posts/thanks.html"
-  >
+      <!-- Asunto personalizado -->
+      <input
+        type="hidden"
+        name="_subject"
+        value="Novo envío de traballo — Rap do País"
+      >
 
-  <!-- Asunto personalizado -->
-  <input
-    type="hidden"
-    name="_subject"
-    value="Novo envío de traballo — Rap do País"
-  >
+      <!-- Redirección tras envío correcto -->
+      <input
+        type="hidden"
+        name="_redirect"
+        value="../thanks.html"
+      >
 
-  <button type="submit">
-    Enviar traballo
-  </button>
-
-</form>
+      <button type="submit">Enviar traballo</button>
+    </form>
 
   </div>
 
   <script>
-    document.getElementById('formulario').addEventListener('submit', e => {
-      e.preventDefault();
+    // Theme toggle simple (igual que tu web)
+    const root = document.body;
+    const toggle = document.getElementById('themeToggle');
 
-      const corpo = `
-Artista(s): ${document.getElementById('artista').value}
-Provincia: ${document.getElementById('provincia').value}
-Poboación: ${document.getElementById('poboacion').value}
+    const saved = localStorage.getItem('rdp-theme') || 'dark';
+    if(saved === 'light') {
+      root.setAttribute('data-theme','light');
+      toggle.textContent='Modo escuro';
+      toggle.setAttribute('aria-pressed','true');
+    }
 
-Descrición / Ligazóns:
-${document.getElementById('descricion').value}
-      `;
-
-      const mailto =
-        `mailto:rapdopais@gmail.com?subject=Envío de traballo — Rap do País&body=${encodeURIComponent(corpo)}`;
-
-      window.location.href = mailto;
+    toggle.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', cur);
+      localStorage.setItem('rdp-theme', cur);
+      toggle.textContent = cur === 'light' ? 'Modo escuro' : 'Modo claro';
+      toggle.setAttribute('aria-pressed', cur === 'light');
     });
   </script>
 </body>
