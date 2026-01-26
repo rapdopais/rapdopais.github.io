@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="gl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Presentación — Rap do País</title>
+  <meta name="description" content="Estes son os nosos obxectivos." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1720; --card:#0b1220; --muted:#9aa4b2; --accent:#f59e0b; --text:#e6eef6;
+      --glass: rgba(255,255,255,0.03);
+      --border: rgba(255,255,255,0.06);
+    }
+    [data-theme="light"]{
+      --bg:#f7fafc; --card:#ffffff; --muted:#616b75; --accent:#db6b0b; --text:#0b1220; --glass: rgba(11,18,32,0.04);
+      --border: rgba(11,18,32,0.10);
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      color:var(--text);
+      background:linear-gradient(180deg,var(--bg),#071028);
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .wrap{max-width:980px;margin:40px auto;padding:24px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px;}
+    .brand{display:flex;gap:12px;align-items:center}
+
+    .logo{
+      width:56px;height:56px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#ef4444);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 6px 18px rgba(2,6,23,0.6);
+      overflow:hidden;
+    }
+    .logo img{width:100%;height:100%;object-fit:cover}
+
+    h1{margin:0;font-size:20px}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+
+    nav{display:flex;gap:12px;align-items:center}
+    .btn{
+      background:transparent;border:1px solid var(--border);
+      padding:8px 12px;border-radius:8px;color:var(--text);
+      cursor:pointer;font-weight:600;text-decoration:none;
+    }
+    .btn.ghost{background:var(--glass);border:1px solid rgba(255,255,255,0.04);}
+
+    .post{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.04);
+      box-shadow:0 6px 18px rgba(2,6,23,0.45);
+    }
+
+    .title{margin:0 0 8px 0;font-size:28px;line-height:1.15}
+    .meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;color:var(--muted);font-size:13px;margin-bottom:14px}
+
+    .tag{
+      display:inline-block;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.06);
+      padding:5px 10px;border-radius:999px;
+      font-size:12px;color:var(--text);
+      text-decoration:none;
+    }
+    .tag:hover{transform:translateY(-1px)}
+    .tag strong{font-weight:700}
+
+    .cover{
+      width:100%;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.06);
+      overflow:hidden;
+      margin:16px 0 18px 0;
+      background:rgba(255,255,255,0.02);
+    }
+    .cover img{width:100%;height:auto;display:block}
+
+    .content{
+      font-size:15px;
+      line-height:1.7;
+      color:var(--text);
+    }
+    .content p{margin:0 0 14px 0;color:var(--text)}
+    .content h2{margin:22px 0 10px 0;font-size:18px}
+    .content a{color:var(--accent);text-decoration:none}
+    .content a:hover{text-decoration:underline}
+
+    .embed{
+      margin:18px 0;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.02);
+    }
+    .embed iframe{
+      width:100%;
+      height:420px;
+      border:0;
+      display:block;
+    }
+
+    .links{
+      margin-top:18px;
+      padding-top:16px;
+      border-top:1px solid rgba(255,255,255,0.06);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .links a{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.05);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+
+    @media (max-width:560px){
+      header{flex-direction:column;align-items:flex-start}
+      .title{font-size:24px}
+      .embed iframe{height:240px}
+    }
+  </style>
+</head>
+
+<body data-theme="dark">
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>
+          <!-- Cambia esto si tu logo tiene otro nombre -->
+          <img src="../images/logo-transparent-svg.svg" alt="Rap do País">
+        </div>
+
+        <div>
+          <h1>Rap do País</h1>
+          <p class="lead">RAP DE GALICIA</p>
+        </div>
+      </div>
+
+      <nav>
+        <button class="btn ghost" id="themeToggle" aria-pressed="false">Modo claro</button>
+        <a class="btn" href="../index.html">Volver</a>
+      </nav>
+    </header>
+
+    <article class="post">
+
+      <!-- TITULO -->
+      <h2 class="title">Presentación Rap do País</h2>
+
+      <!-- META: fecha + tags -->
+      <div class="meta">
+        <span>📅 2026-01-26</span>
+
+        <!-- Tags obligatorios (estos 3 son los importantes para ti) -->
+        <a class="tag" href="../archivo.html?type=artist&value={{ARTISTA_URL}}">
+          🎤 <strong>Artista:</strong> Pedrido
+        </a>
+
+        <a class="tag" href="../archivo.html?type=province&value={{PROVINCIA_URL}}">
+          📍 <strong>Provincia:</strong> Pontevedra
+        </a>
+
+        <a class="tag" href="../archivo.html?type=town&value={{LOCALIDAD_URL}}">
+          🏙️ <strong>Localidade:</strong> Ponteareas
+        </a>
+
+       
+      </div>
+
+      <!-- IMAGEN PRINCIPAL (opcional) -->
+      <div class="cover">
+        <!-- Si no quieres imagen, puedes borrar todo este bloque -->
+        <img src="../images/logo-transparent-svg.svg" alt="LOGO">
+      </div>
+
+      <!-- CUERPO DEL POST -->
+      <div class="content">
+
+        <p><strong>Polo Rap de Galicia</strong></p>
+
+        <p>
+          Bos días. 
+
+              Dende xa hai anos o rap de Galicia está orfo de unha páxina web que xunte a todos os artistas de Hip Hop da nosa comunidade.
+          
+              A encomiable razón de ser de páxinas como GaliciaFlow ou FlowGallego no pasado, e de HipHopEmGalego no presente, veñen a cubrir
+          necesidades que os artistas independentes e underground temos para publicitar o noso traballo, sexa en galego ou en castelán (ou noutros idiomas
+          que tamén poden convivir en Galicia). 
+              
+              Esta web nace coa intención de cubrir esa necesidade para quen teña o espirito necesario e para o público que non desexa estar pendente de cincuenta páxinas 
+          diferentes para atopar o que realmente quere escoitar. Tamén ten que servir de oportunidade a aqueles artistas que estén comezando
+          e queran facer contactos ou darse a coñecer. Por agora non teremos un sistema de comentarios ou likes. Pretendemos que o apoio
+          vaia directamente ás páxinas do artista, onde realmente poden ter un impacto positivo nas súas vidas.
+
+              Ademáis de traballos, cancións, videoclips, etc., a intención é que podades tamén publicitar os diferentes eventos relacionados
+          co Hip Hop, e que nunha soa páxina podan ser consultados.
+
+              En Rap do País gardámonos o dereito de non publicitar eventos ou traballos que non teñan que ver co Hip Hop, por exemplo, festivais
+          de reggaeton, xa que inda que agora a todos se nos catalogue como "xénero urbano", existe un consenso bastante claro sobre que éste xénero
+          non coaliga cos diferentes elementos da cultura Hip Hop.
+        </p>
+
+        <p>
+              Dende Rap do País non imos estar detrás da xente para que nos envíe os seus traballos. Se os propios artistas non estades dispostos a sacrificar
+          dous minutos en encher o formulario polo cal nos chegan os traballos ou eventos, mal imos. O formulario o podedes atopar en: https://rapdopais.github.io/posts/formulario.html .
+
+              En caso de algún erro técnico na entrega do formulario podedesnos contactar en: rapdopais@gmail.com .
+
+              Con desexos de levar o Hip Hop de Galicia ao máis alto.
+
+                                                                                                                      Equipo de Rap do País.
+        </p>
+
+
+    </article>
+
+    <footer>
+      © <span id="year"></span> Rap do País · Feito con ♥ · GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    // Año
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tema (igual que tu index)
+    const root = document.body;
+    const toggle = document.getElementById('themeToggle');
+
+    const saved = localStorage.getItem('rdp-theme') || 'dark';
+    if(saved === 'light') {
+      root.setAttribute('data-theme','light');
+      toggle.textContent='Modo escuro';
+      toggle.setAttribute('aria-pressed','true');
+    }
+
+    toggle.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', cur);
+      localStorage.setItem('rdp-theme', cur);
+      toggle.textContent = cur === 'light' ? 'Modo escuro' : 'Modo claro';
+      toggle.setAttribute('aria-pressed', cur === 'light');
+    });
+  </script>
+</body>
+</html>
