@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="gl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{TITULO_DEL_POST}} — Rap do País</title>
+  <meta name="description" content="{{EXTRACTO_CORTO}}" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1720; --card:#0b1220; --muted:#9aa4b2; --accent:#f59e0b; --text:#e6eef6;
+      --glass: rgba(255,255,255,0.03);
+      --border: rgba(255,255,255,0.06);
+    }
+    [data-theme="light"]{
+      --bg:#f7fafc; --card:#ffffff; --muted:#616b75; --accent:#db6b0b; --text:#0b1220; --glass: rgba(11,18,32,0.04);
+      --border: rgba(11,18,32,0.10);
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      color:var(--text);
+      background:linear-gradient(180deg,var(--bg),#071028);
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .wrap{max-width:980px;margin:40px auto;padding:24px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px;}
+    .brand{display:flex;gap:12px;align-items:center}
+
+    .logo{
+      width:56px;height:56px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#ef4444);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 6px 18px rgba(2,6,23,0.6);
+      overflow:hidden;
+    }
+    .logo img{width:100%;height:100%;object-fit:cover}
+
+    h1{margin:0;font-size:20px}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+
+    nav{display:flex;gap:12px;align-items:center}
+    .btn{
+      background:transparent;border:1px solid var(--border);
+      padding:8px 12px;border-radius:8px;color:var(--text);
+      cursor:pointer;font-weight:600;text-decoration:none;
+    }
+    .btn.ghost{background:var(--glass);border:1px solid rgba(255,255,255,0.04);}
+
+    .post{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.04);
+      box-shadow:0 6px 18px rgba(2,6,23,0.45);
+    }
+
+    .title{margin:0 0 8px 0;font-size:28px;line-height:1.15}
+    .meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;color:var(--muted);font-size:13px;margin-bottom:14px}
+
+    .tag{
+      display:inline-block;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.06);
+      padding:5px 10px;border-radius:999px;
+      font-size:12px;color:var(--text);
+      text-decoration:none;
+    }
+    .tag:hover{transform:translateY(-1px)}
+    .tag strong{font-weight:700}
+
+    .cover{
+      width:100%;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.06);
+      overflow:hidden;
+      margin:16px 0 18px 0;
+      background:rgba(255,255,255,0.02);
+    }
+    .cover img{width:100%;height:auto;display:block}
+
+    .content{
+      font-size:15px;
+      line-height:1.7;
+      color:var(--text);
+    }
+    .content p{margin:0 0 14px 0;color:var(--text)}
+    .content h2{margin:22px 0 10px 0;font-size:18px}
+    .content a{color:var(--accent);text-decoration:none}
+    .content a:hover{text-decoration:underline}
+
+    .embed{
+      margin:18px 0;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.02);
+    }
+    .embed iframe{
+      width:100%;
+      height:420px;
+      border:0;
+      display:block;
+    }
+
+    .links{
+      margin-top:18px;
+      padding-top:16px;
+      border-top:1px solid rgba(255,255,255,0.06);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .links a{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.05);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+
+    @media (max-width:560px){
+      header{flex-direction:column;align-items:flex-start}
+      .title{font-size:24px}
+      .embed iframe{height:240px}
+    }
+  </style>
+</head>
+
+<body data-theme="dark">
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>
+          <!-- Cambia esto si tu logo tiene otro nombre -->
+          <img src="../images/logo-transparent-svg.svg" alt="Rap do País">
+        </div>
+
+        <div>
+          <h1>Rap do País</h1>
+          <p class="lead">RAP DE GALICIA</p>
+        </div>
+      </div>
+
+      <nav>
+        <button class="btn ghost" id="themeToggle" aria-pressed="false">Modo claro</button>
+        <a class="btn" href="../index.html">Volver</a>
+      </nav>
+    </header>
+
+    <article class="post">
+
+      <!-- TITULO -->
+      <h2 class="title">{{TITULO_DEL_POST}}</h2>
+
+      <!-- META: fecha + tags -->
+      <div class="meta">
+        <span>📅 {{FECHA_YYYY_MM_DD}}</span>
+
+        <!-- Tags obligatorios (estos 3 son los importantes para ti) -->
+        <a class="tag" href="../archivo.html?type=artist&value={{ARTISTA_URL}}">
+          🎤 <strong>Artista:</strong> {{ARTISTA_TEXTO}}
+        </a>
+
+        <a class="tag" href="../archivo.html?type=province&value={{PROVINCIA_URL}}">
+          📍 <strong>Provincia:</strong> {{PROVINCIA_TEXTO}}
+        </a>
+
+        <a class="tag" href="../archivo.html?type=town&value={{LOCALIDAD_URL}}">
+          🏙️ <strong>Localidade:</strong> {{LOCALIDAD_TEXTO}}
+        </a>
+
+        <!-- Tags extra opcionales (si no los quieres, bórralos) -->
+        <!--
+        <a class="tag" href="../archivo.html?type=extra&value={{EXTRA_URL}}">🔥 {{EXTRA_TEXTO}}</a>
+        -->
+      </div>
+
+      <!-- IMAGEN PRINCIPAL (opcional) -->
+      <div class="cover">
+        <!-- Si no quieres imagen, puedes borrar todo este bloque -->
+        <img src="../images/{{IMAGEN_POST}}" alt="{{ALT_IMAGEN}}">
+      </div>
+
+      <!-- CUERPO DEL POST -->
+      <div class="content">
+
+        <p><strong>{{EXTRACTO_CORTO}}</strong></p>
+
+        <p>
+          {{TEXTO_1}}
+        </p>
+
+        <p>
+          {{TEXTO_2}}
+        </p>
+
+        <h2>📌 Detalles</h2>
+        <p>
+          <strong>Artista:</strong> {{ARTISTA_TEXTO}}<br>
+          <strong>Provincia:</strong> {{PROVINCIA_TEXTO}}<br>
+          <strong>Localidade:</strong> {{LOCALIDAD_TEXTO}}<br>
+        </p>
+
+        <!-- EMBED DE YOUTUBE (opcional) -->
+        <h2>▶️ Vídeo</h2>
+        <div class="embed">
+          <!-- Pega aquí el embed de YouTube (iframe) -->
+          <iframe
+            src="https://www.youtube.com/embed/{{YOUTUBE_ID}}"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <!-- EMBED SPOTIFY / SOUNDCLOUD (opcional) -->
+        <h2>🎧 Audio</h2>
+        <div class="embed">
+          <!-- Ejemplo Spotify: pega el iframe que te da Spotify -->
+          <!--
+          <iframe style="border-radius:12px"
+            src="https://open.spotify.com/embed/track/XXXXXXXX"
+            height="152"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+          -->
+
+          <!-- Ejemplo SoundCloud: pega el iframe que te da SoundCloud -->
+          <!--
+          <iframe
+            height="166"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=...">
+          </iframe>
+          -->
+
+          <p style="color:var(--muted);margin:0">
+            (Opcional) Aquí puedes insertar Spotify o SoundCloud. Si no lo necesitas, borra esta sección.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- LINKS EXTERNOS (opcional) -->
+      <div class="links">
+        <a href="{{LINK_TRABAJO}}" target="_blank" rel="noopener">🔗 Enlace do traballo</a>
+        <a href="{{LINK_INSTAGRAM}}" target="_blank" rel="noopener">📸 Instagram</a>
+        <a href="{{LINK_YOUTUBE}}" target="_blank" rel="noopener">▶️ YouTube</a>
+      </div>
+
+    </article>
+
+    <footer>
+      © <span id="year"></span> Rap do País · Feito con ♥ · GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    // Año
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tema (igual que tu index)
+    const root = document.body;
+    const toggle = document.getElementById('themeToggle');
+
+    const saved = localStorage.getItem('rdp-theme') || 'dark';
+    if(saved === 'light') {
+      root.setAttribute('data-theme','light');
+      toggle.textContent='Modo escuro';
+      toggle.setAttribute('aria-pressed','true');
+    }
+
+    toggle.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', cur);
+      localStorage.setItem('rdp-theme', cur);
+      toggle.textContent = cur === 'light' ? 'Modo escuro' : 'Modo claro';
+      toggle.setAttribute('aria-pressed', cur === 'light');
+    });
+  </script>
+</body>
+</html>
