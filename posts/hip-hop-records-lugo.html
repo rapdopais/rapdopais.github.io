@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="gl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hip Hop Records — Rap do País</title>
+  <meta name="description" content="Selo de Vinilos e Cassettes dende Lugo" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1720; --card:#0b1220; --muted:#9aa4b2; --accent:#f59e0b; --text:#e6eef6;
+      --glass: rgba(255,255,255,0.03);
+      --border: rgba(255,255,255,0.06);
+    }
+    [data-theme="light"]{
+      --bg:#f7fafc; --card:#ffffff; --muted:#616b75; --accent:#db6b0b; --text:#0b1220; --glass: rgba(11,18,32,0.04);
+      --border: rgba(11,18,32,0.10);
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      color:var(--text);
+      background:linear-gradient(180deg,var(--bg),#071028);
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .wrap{max-width:980px;margin:40px auto;padding:24px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px;}
+    .brand{display:flex;gap:12px;align-items:center}
+
+    .logo{
+      width:56px;height:56px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#ef4444);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 6px 18px rgba(2,6,23,0.6);
+      overflow:hidden;
+    }
+    .logo img{width:100%;height:100%;object-fit:cover}
+
+    h1{margin:0;font-size:20px}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+
+    nav{display:flex;gap:12px;align-items:center}
+    .btn{
+      background:transparent;border:1px solid var(--border);
+      padding:8px 12px;border-radius:8px;color:var(--text);
+      cursor:pointer;font-weight:600;text-decoration:none;
+    }
+    .btn.ghost{background:var(--glass);border:1px solid rgba(255,255,255,0.04);}
+
+    .post{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.04);
+      box-shadow:0 6px 18px rgba(2,6,23,0.45);
+    }
+
+    .title{margin:0 0 8px 0;font-size:28px;line-height:1.15}
+    .meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;color:var(--muted);font-size:13px;margin-bottom:14px}
+
+    .tag{
+      display:inline-block;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.06);
+      padding:5px 10px;border-radius:999px;
+      font-size:12px;color:var(--text);
+      text-decoration:none;
+    }
+    .tag:hover{transform:translateY(-1px)}
+    .tag strong{font-weight:700}
+
+    .cover{
+      width:100%;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.06);
+      overflow:hidden;
+      margin:16px 0 18px 0;
+      background:rgba(255,255,255,0.02);
+    }
+    .cover img{width:100%;height:auto;display:block}
+
+    .content{
+      font-size:15px;
+      line-height:1.7;
+      color:var(--text);
+    }
+    .content p{margin:0 0 14px 0;color:var(--text)}
+    .content h2{margin:22px 0 10px 0;font-size:18px}
+    .content a{color:var(--accent);text-decoration:none}
+    .content a:hover{text-decoration:underline}
+
+    .embed{
+      margin:18px 0;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.02);
+    }
+    .embed iframe{
+      width:100%;
+      height:420px;
+      border:0;
+      display:block;
+    }
+
+    .links{
+      margin-top:18px;
+      padding-top:16px;
+      border-top:1px solid rgba(255,255,255,0.06);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .links a{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.05);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+
+    @media (max-width:560px){
+      header{flex-direction:column;align-items:flex-start}
+      .title{font-size:24px}
+      .embed iframe{height:240px}
+    }
+  </style>
+</head>
+
+<body data-theme="dark">
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>
+          <a href="../index.html" class="logo" aria-label="Volver ao inicio">
+  <img src="../images/logo-transparent-svg.svg" alt="Rap do País">
+</a>
+        </div>
+
+        <div>
+          <h1>Rap do País</h1>
+          <p class="lead">RAP DE GALICIA</p>
+        </div>
+      </div>
+
+      <nav>
+        <button class="btn ghost" id="themeToggle" aria-pressed="false">Modo claro</button>
+        <a class="btn" href="../index.html">Volver</a>
+      </nav>
+    </header>
+
+    <article class="post">
+
+      <!-- TITULO -->
+      <h2 class="title">Hip Hop Real Records</h2>
+
+      <!-- META: fecha + tags -->
+      <div class="meta">
+        <span>📅 2026-01-26</span>
+
+        <!-- Tags obligatorios (estos 3 son los importantes para ti) -->
+        <a class="tag" href="../archivo.html?type=artist&value={{ARTISTA_URL}}">
+          🎤 <strong>Artista:</strong> Óscar Vila
+        </a>
+
+        <a class="tag" href="../archivo.html?type=province&value={{PROVINCIA_URL}}">
+          📍 <strong>Provincia:</strong> Lugo
+        </a>
+
+        <a class="tag" href="../archivo.html?type=town&value={{LOCALIDAD_URL}}">
+          🏙️ <strong>Localidade:</strong> Lugo
+        </a>
+
+        <!-- Tags extra opcionales (si no los quieres, bórralos) -->
+        <!--
+        <a class="tag" href="../archivo.html?type=extra&value=http://www.hiphopreal.bandcamp.com/">🔥 Hip Hop Real Records</a>
+        -->
+      </div>
+
+      <!-- IMAGEN PRINCIPAL (opcional) -->
+      <div class="cover">
+        <!-- Si no quieres imagen, puedes borrar todo este bloque -->
+        <img src="../images/1000076289.jpg" alt="{{ALT_IMAGEN}}">
+      </div>
+
+      <!-- CUERPO DEL POST -->
+      <div class="content">
+
+        <p><strong>Dende Lugo, preséntannos o selo Hip Hop Real Records</strong></p>
+
+        <p>
+         "Óscar Vila: B-Boy, coleccionista y activista cultural conectado con la escena hip hop desde 1989, con experiencia activa en el panorama nacional e internacional. 
+          Fundador CEO de Hip Hop Real Records, sello independiente especializado en rap underground, además es responsable de organizar eventos y referencias en formato vinilo y cassette,
+          compartiendo con artistas a nivel nacional e internacional; 
+          Frank T, Geronación, Jauría de Rimas, Hablando en Plata, Falsalarma, Tremendo, Sean Price, Mr. Len –Company Flow– Mista Sinista -X-ecutioners- Rasco –Cali Agents– Wildchild (Lootpack), Little Brother, AZ, Lil Dap (Group Home), Afu-Ra, entre otros. 
+          Ha colaborado con la mayoría de grupos relevantes del rap español con disco publicado en los años 90 y 2000 como promotor de zona ayudando a desarrollar el movimiento y apoyando la cultura de club de forma independiente, Hip Hop Head."
+        </p>
+
+        <h2>📌 Detalles</h2>
+        <p>
+          <strong>Artista:</strong> Hip Hop Real Records<br>
+          <strong>Provincia:</strong> Lugo<br>
+          <strong>Localidade:</strong> Lugo<br>
+        </p>
+
+        <!-- EMBED DE YOUTUBE (opcional) -->
+        <h2>▶️ Vídeo</h2>
+        <div class="embed">
+          <!-- Pega aquí el embed de YouTube (iframe) -->
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/Kn35H_cXOo0?si=R33U6kF7YDctJmE4" 
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>    
+          </iframe>
+        </div>
+
+       
+
+      </div>
+
+      <!-- LINKS EXTERNOS (opcional) -->
+      <div class="links">
+        <a href="https://hiphopreal.bandcamp.com/" target="_blank" rel="noopener">🔗 Enlace do traballo</a>
+        <a href="https://www.instagram.com/hiphopreal.records" target="_blank" rel="noopener">📸 Instagram</a>
+        <a href="https://www.youtube.com/@hiphoprealtv" target="_blank" rel="noopener">▶️ YouTube</a>
+      </div>
+
+    </article>
+
+    <footer>
+      © <span id="year"></span> Rap do País · Feito con ♥ · GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    // Año
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tema (igual que tu index)
+    const root = document.body;
+    const toggle = document.getElementById('themeToggle');
+
+    const saved = localStorage.getItem('rdp-theme') || 'dark';
+    if(saved === 'light') {
+      root.setAttribute('data-theme','light');
+      toggle.textContent='Modo escuro';
+      toggle.setAttribute('aria-pressed','true');
+    }
+
+    toggle.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', cur);
+      localStorage.setItem('rdp-theme', cur);
+      toggle.textContent = cur === 'light' ? 'Modo escuro' : 'Modo claro';
+      toggle.setAttribute('aria-pressed', cur === 'light');
+    });
+  </script>
+</body>
+</html>
