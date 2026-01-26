@@ -131,7 +131,8 @@
       }
      
     ];
-
+    // Ordenar posts por fecha (más nuevos primero)
+    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
     // Renderizado de tarjetas
     const grid = document.getElementById('postsGrid');
     posts.forEach(p => {
